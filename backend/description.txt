@@ -1,0 +1,9 @@
+backend/                   # FastAPI application handling data, auth, and business logic
+   ├── app/
+   │   ├── api/                 # Route definitions grouped by resource (products, cart, orders, payments, auth, admin)
+   │   ├── models/              # Database schema definitions (SQLAlchemy)
+   │   ├── schemas/             # Request/response validation (Pydantic)
+   │   ├── services/            # Business logic separated from routes (totals, stock checks, etc.)
+   │   ├── db/                  # Database connection and migrations
+   │   └── core/                # Security, JWT handling, and app configuration
+   └── tests/                  # Automated tests for backend logic and endpoints

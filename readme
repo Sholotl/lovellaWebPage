@@ -1,0 +1,35 @@
+An interactive map website that highlights important places. Each marker opens a panel with photos and a note telling the story of what happened there. It’s a gift designed to be explored like a museum.
+
+```
+lovellaWebPage/
+│
+├── frontend/                  # Public-facing website: catalog, cart, checkout, user accounts
+│   ├── public/                 # Fixed, rarely-changing site assets referenced by direct path (favicon, logo)
+│   ├── js/
+│   │   ├── features/            # Shared business logic used across multiple pages (cart state, auth/session handling) — not tied to any single page
+│   │   └── pages/                # Page-specific scripts that render each view and call into features/ and api.js
+│   ├── styles/                 # CSS per page, plus a main.css holding global variables and base styles
+│   ├── assets/                 # Growing content assets: UI icons and any static site imagery (not product photos — those live on the backend, see below)
+│   │
+│   └── admin/                  # Nested admin panel for managing the store, restricted to admin users
+│       ├── js/                  # Admin-specific page scripts (product forms, order tables), reusing frontend/js/features/ and api.js
+│       └── styles/              # Admin-specific layout and page styles (sidebar, dashboard, tables)
+│
+├── backend/                   # FastAPI application handling data, auth, and business logic
+│   ├── app/
+│   │   ├── main.py               # Entry point, mounts routers and serves static files
+│   │   ├── api/                  # Route definitions grouped by resource (products, cart, orders, payments, auth, admin)
+│   │   ├── models/               # Database schema definitions (SQLAlchemy)
+│   │   ├── schemas/              # Request/response validation (Pydantic)
+│   │   ├── services/             # Business logic separated from routes (totals, stock checks, etc.)
+│   │   ├── db/                   # Database connection and migrations
+│   │   ├── core/                 # Security, JWT handling, and app configuration
+│   │   └── static/
+│   │       └── products/          # Actual product image files, uploaded via the admin panel; the DB only stores each product's image path/URL, not the file itself
+│   └── tests/                  # Automated tests for backend logic and endpoints
+│
+├── docs/                      # Project documentation
+└── .github/                   # CI/CD workflows for deployment and testing
+```
+
+This is a structure I propose for the project, vanilla JavaScript. Any of these details could be modified in the future.

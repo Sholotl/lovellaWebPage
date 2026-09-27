@@ -1,0 +1,2 @@
+# Shared business logic used across multiple pages (cart state, auth/session handling) — not tied to any single page
+# Page-specific scripts that render each view and call into features/ and api.js
